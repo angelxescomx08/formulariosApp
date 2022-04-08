@@ -24,7 +24,6 @@ export class ValidatorService {
 
   camposIguales(campo1:string, campo2:string){
     return (formGroup: AbstractControl): ValidationErrors | null=>{
-      console.log(formGroup)
       const pass1 = formGroup.get(campo1)?.value;
       const pass2 = formGroup.get(campo2)?.value;
 
