@@ -40,21 +40,48 @@
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Username</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Username del usuario">
+                    <input 
+                        type="text"
+                        formControlName="username"
+                        class="form-control" 
+                        placeholder="Username del usuario">
+                    <span 
+                        class="form-text text-danger"
+                        *ngIf="campoNoValido('username')">
+                        El username ya existe
+                    </span>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Password</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input 
+                        type="password" 
+                        formControlName="password"
+                        class="form-control" 
+                        placeholder="Password">
+                    <span 
+                        class="form-text text-danger"
+                        *ngIf="campoNoValido('password')">
+                        El password debe de ser de 6 caracteres
+                    </span>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Confirmar Password</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" placeholder="Confirmar Password">
+                    <input 
+                        type="password" 
+                        formControlName="password2"
+                        class="form-control" 
+                        placeholder="Confirmar Password">
+                    <span 
+                        class="form-text text-danger"
+                        *ngIf="campoNoValido('password2')">
+                        Las contraseñas deben de ser iguales
+                    </span>
                 </div>
             </div>
 
@@ -70,10 +97,21 @@
     </div>
 </div>
 
-<h2>Form valid: {{miFormulario.valid}}</h2>
+<h5>Form valid: {{miFormulario.valid}}</h5>
+<h5>Form errors</h5>
+<pre>{{miFormulario.errors | json}}</pre>
 
-<h2>Nombre</h2>
+<h5>Nombre</h5>
 <pre>{{miFormulario.controls['nombre'].errors | json}}</pre>
 
-<h2>Email</h2>
+<h5>Email</h5>
 <pre>{{miFormulario.controls['email'].errors | json}}</pre>
+
+<h5>Username</h5>
+<pre>{{miFormulario.controls['username'].errors | json}}</pre>
+
+<h5>Password</h5>
+<pre>{{miFormulario.controls['password'].errors | json}}</pre>
+
+<h5>Confirmar Password</h5>
+<pre>{{miFormulario.controls['password2'].errors | json}}</pre>
